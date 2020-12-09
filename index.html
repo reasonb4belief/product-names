@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Apple Product Generator</title>
+<style>
+body {
+  font-family:verdana;
+  text-align:center;
+}
+h1 {
+}
+button {
+  color: white;
+  background-color: blue;
+}
+p {
+  font-size: 18px;
+}
+</style>
+
+</head>
+<body>
+
+<h1>Apple Product Generator</h1>
+<button onclick=generateProduct()>Generate</button>
+<p id="prodname"></p>
+
+<script>
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
+function generateProduct() {
+
+  other = ['Lightning', 'Smart', 'Magic']
+  random_other = other[Math.floor(Math.random() * other.length)];
+  Trademark = ['', 'Apple', 'Mac', 'i', 'Air', random_other]
+  noun = [' Cougar', ' Necklace', ' Glass', ' Shoes', ' Hat', ' Mustache', ' Keys', ' Kitchen', ' Fan', ' Bidet', ' Wheels', ' Wallet', ' Keyboard', ' Clothes', ' Kit', ' Toy', ' TV', ' Cam', ' Tampon', ' Brainchip', ' Dream', ' Clothes', ' [insert motivational word here] ']
+  shuffle(noun)
+  Device = [noun[0], noun[1], '', 'Book', 'Pad', 'Pod', 'Pods', 'Phone', ' Watch']
+  Descriptor = ['', '', 'OS', ' Mini', ' Air', ' SE', ' X', '+', 'Max', 'Pro']
+
+  shuffle(Trademark)
+  shuffle(Device)
+  shuffle(Descriptor)
+  NewProduct = [Trademark[0], Device[0], Descriptor[0]]
+  NewProductName = NewProduct.join('')
+  console.log(NewProductName)
+  document.getElementById("prodname").innerHTML = NewProductName;
+
+}
+</script>
+
+</body>
+</html>
